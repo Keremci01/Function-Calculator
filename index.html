@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <title>Function Calculator</title>
-<script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=desmos"></script>
+<script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 </head>
 
 <body>
@@ -19,22 +18,16 @@
 
 <script>
 
-window.onload = function(){
-
-  var elt = document.getElementById("calculator");
-  window.calculator = Desmos.GraphingCalculator(elt);
-
-}
+var elt = document.getElementById('calculator');
+var calculator = Desmos.GraphingCalculator(elt);
 
 function draw(){
-
   var f = document.getElementById("func").value;
 
   calculator.setExpression({
-    id: "graph1",
-    latex: "y=" + f
+    id:"graph1",
+    latex:"y="+f
   });
-
 }
 
 </script>
