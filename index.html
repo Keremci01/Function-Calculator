@@ -2,18 +2,19 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Graph</title>
+<title>Function Calculator</title>
 
-<script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=abc123"></script>
+<script src="https://cdn.jsdelivr.net/npm/function-plot/dist/function-plot.js"></script>
 
 <style>
-html,body{
-margin:0;
-height:100%;
+body{
+font-family:Arial;
+margin:20px;
 }
-#calculator{
+
+#plot{
 width:100%;
-height:100vh;
+height:500px;
 }
 </style>
 
@@ -21,21 +22,30 @@ height:100vh;
 
 <body>
 
-<div id="calculator"></div>
+<h2>Fonksiyon Yaz</h2>
+
+<input id="func" placeholder="x^2">
+<button onclick="draw()">Grafiği Çiz</button>
+
+<div id="plot"></div>
 
 <script>
-window.onload = function(){
 
-var elt = document.getElementById("calculator");
+function draw(){
 
-var calculator = Desmos.GraphingCalculator(elt);
+var f = document.getElementById("func").value;
 
-calculator.setExpression({
-id:"1",
-latex:"y=x^2"
+functionPlot({
+target: '#plot',
+width: 800,
+height: 500,
+data: [{
+fn: f
+}]
 });
 
-};
+}
+
 </script>
 
 </body>
