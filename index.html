@@ -8,7 +8,7 @@
 
 <style>
 body{
-font-family:Arial;
+font-family: Arial;
 margin:20px;
 }
 
@@ -24,7 +24,7 @@ height:500px;
 
 <h2>Fonksiyon Yaz</h2>
 
-<input id="func" placeholder="x^2">
+<input id="func" placeholder="x^2" value="x^2">
 <button onclick="draw()">Grafiği Çiz</button>
 
 <div id="plot"></div>
@@ -37,14 +37,17 @@ var f = document.getElementById("func").value;
 
 functionPlot({
 target: '#plot',
-width: 800,
+width: 900,
 height: 500,
+grid: true,
 data: [{
 fn: f
 }]
 });
 
 }
+
+window.onload = draw;
 
 </script>
 
