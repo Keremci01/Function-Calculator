@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Function Calculator</title>
-<script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=desmos"></script>
 </head>
 
 <body>
@@ -10,7 +10,6 @@
 <h2>Fonksiyon Yaz</h2>
 
 <input id="func" placeholder="x^2">
-<button onclick="draw()">Grafiği Çiz</button>
 
 <br><br>
 
@@ -18,17 +17,19 @@
 
 <script>
 
-var elt = document.getElementById('calculator');
+var elt = document.getElementById("calculator");
 var calculator = Desmos.GraphingCalculator(elt);
 
-function draw(){
-  var f = document.getElementById("func").value;
+document.getElementById("func").addEventListener("input", function(){
+
+  var f = this.value;
 
   calculator.setExpression({
     id:"graph1",
-    latex:"y="+f
+    latex:`y=${f}`
   });
-}
+
+});
 
 </script>
 
