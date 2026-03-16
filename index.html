@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,17 @@ margin:0;
 overflow:hidden;
 }
 
+#panel{
+position:absolute;
+top:10px;
+left:10px;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+z-index:10;
+}
+
 #plot{
 width:100vw;
 height:100vh;
@@ -23,10 +35,11 @@ height:100vh;
 
 <body>
 
-<h2>Fonksiyon Yaz</h2>
-
-<input id="func" placeholder="x^2" value="x^2">
+<div id="panel">
+<h3>Fonksiyon Yaz</h3>
+<input id="func" value="x^2">
 <button onclick="draw()">Grafiği Çiz</button>
+</div>
 
 <div id="plot"></div>
 
@@ -37,20 +50,12 @@ function draw(){
 var f = document.getElementById("func").value;
 
 functionPlot({
-target: '#plot',
-width: 900,
-height: 500,
-grid: true,
-data: [{
-fn: f
+target:'#plot',
+grid:true,
+data:[{
+fn:f
 }]
 });
 
 }
-
-window.onload = draw;
-
-</script>
-
-</body>
-</html>
+```
