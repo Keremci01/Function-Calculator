@@ -6,14 +6,15 @@
 <script src="https://www.desmos.com/api/v1.6/calculator.js?apiKey=desmos"></script>
 
 <style>
-html,body{
-margin:0;
-height:100%;
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
 }
 
-#calculator{
-width:100%;
-height:100vh;
+#calculator {
+  width:100%;
+  height:100vh;
 }
 </style>
 
@@ -28,11 +29,13 @@ height:100vh;
 var elt = document.getElementById("calculator");
 
 var calculator = Desmos.GraphingCalculator(elt,{
-expressions:true,
-settingsMenu:true,
-zoomButtons:true,
-keypad:true
+  expressions:true,
+  settingsMenu:true,
+  zoomButtons:true,
+  keypad:true
 });
+
+calculator.setExpression({id:'1', latex:'y=x^2'});
 
 </script>
 
