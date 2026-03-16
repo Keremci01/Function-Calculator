@@ -8,10 +8,21 @@
 <script src="https://cdn.jsdelivr.net/npm/function-plot/dist/function-plot.js"></script>
 
 <style>
-body{
-font-family: Arial;
+html,body{
 margin:0;
+padding:0;
+width:100%;
+height:100%;
 overflow:hidden;
+font-family:Arial;
+}
+
+#plot{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
 }
 
 #panel{
@@ -24,11 +35,6 @@ border-radius:8px;
 box-shadow:0 0 10px rgba(0,0,0,0.2);
 z-index:10;
 }
-
-#plot{
-width:100vw;
-height:100vh;
-}
 </style>
 
 </head>
@@ -36,9 +42,9 @@ height:100vh;
 <body>
 
 <div id="panel">
-<h3>Fonksiyon Yaz</h3>
+Fonksiyon:
 <input id="func" value="x^2">
-<button onclick="draw()">Grafiği Çiz</button>
+<button onclick="draw()">Çiz</button>
 </div>
 
 <div id="plot"></div>
@@ -51,6 +57,8 @@ var f = document.getElementById("func").value;
 
 functionPlot({
 target:'#plot',
+width: window.innerWidth,
+height: window.innerHeight,
 grid:true,
 data:[{
 fn:f
@@ -58,4 +66,13 @@ fn:f
 });
 
 }
+
+window.onload = draw;
+
+window.onresize = draw;
+
+</script>
+
+</body>
+</html>
 ```
