@@ -1,1 +1,56 @@
+body{
+margin:0;
+overflow:hidden;
+background:black;
+font-family:monospace;
+color:#00ff00;
+}
 
+#desktop{
+width:100vw;
+height:100vh;
+background:radial-gradient(circle,#001a00,#000000);
+position:relative;
+}
+
+.icon{
+width:80px;
+text-align:center;
+cursor:pointer;
+position:absolute;
+}
+
+.icon div{
+font-size:40px;
+}
+
+.icon span{
+font-size:12px;
+}
+
+.window{
+position:absolute;
+width:400px;
+background:#001a00;
+border:2px solid #00ff00;
+box-shadow:0 0 20px #00ff00;
+}
+
+.titlebar{
+background:#00ff00;
+color:black;
+padding:5px;
+cursor:move;
+display:flex;
+justify-content:space-between;
+}
+
+.content{
+padding:10px;
+height:200px;
+overflow:auto;
+}
+
+.close{
+cursor:pointer;
+}
