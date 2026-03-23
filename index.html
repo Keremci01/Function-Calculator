@@ -1,27 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Hacker OS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sürat Zaman Grafiği</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
 
-<div id="desktop">
+<div class="container">
+    <h1>Sürat - Zaman Grafiği</h1>
 
-<div class="icon" style="top:50px;left:50px" onclick="openWindow('console')">
-<div>💻</div>
-<span>Console</span>
+    <div class="controls">
+        <input type="number" id="speed" placeholder="Sürat (m/s)">
+        <input type="number" id="time" placeholder="Zaman (s)">
+        <button onclick="addData()">Ekle</button>
+        <button onclick="clearData()">Temizle</button>
+    </div>
+
+    <canvas id="chart"></canvas>
 </div>
 
-<div class="icon" style="top:150px;left:50px" onclick="openWindow('cracker')">
-<div>🔓</div>
-<span>Password</span>
-</div>
-
-</div>
-
-<script src="script.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
