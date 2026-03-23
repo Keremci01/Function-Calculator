@@ -34,6 +34,38 @@ const chart = new Chart(ctx, {
     }
 })
 
+function convertData() {
+    if (currentType === "surat") return dataPoints
+
+    if (currentType === "konum") {
+        let result = []
+        let toplam = 0
+
+        for (let i = 0; i < dataPoints.length; i++) {
+            if (i > 0) {
+                let dt = dataPoints[i].x - dataPoints[i - 1].x
+                let ort = (dataPoints[i].y + dataPoints[i - 1].y) / 2
+                toplam += ort * dt
+            }
+            result.push({ x: dataPoints[i].x, y: toplam })
+        }
+
+        return result
+    }
+
+    if (currentType === "ivme") {
+        let result = []
+
+        for (let i = 1; i < dataPoints.length; i++) {
+            let dt = dataPoints[i].x - dataPoints[i - 1].x
+            let dv = dataPoints[i].y - dataPoints[i - 1].y
+            result.push({ x: dataPoints[i].x, y: dv / dt })
+        }
+
+        return result
+    }
+}
+
 function updateChartType() {
     if (currentType === "surat") {
         chart.data.datasets[0].label = "Sürat (m/s)"
@@ -50,6 +82,7 @@ function updateChartType() {
         chart.options.scales.y.title.text = "İvme (m/s²)"
     }
 
+    chart.data.datasets[0].data = convertData()
     chart.update()
 }
 
@@ -61,6 +94,8 @@ function addData() {
 
     dataPoints.push({ x: time, y: speed })
     dataPoints.sort((a, b) => a.x - b.x)
+
+    chart.data.datasets[0].data = convertData()
     chart.update()
 
     document.getElementById('time').value = ''
@@ -69,6 +104,7 @@ function addData() {
 
 function clearData() {
     dataPoints.length = 0
+    chart.data.datasets[0].data = []
     chart.update()
 }
 
@@ -83,6 +119,5 @@ function toggleGroup(id) {
 function showPage(page) {
     currentType = page
     updateChartType()
-
     document.getElementById('sidebar').classList.remove('active')
 }
