@@ -9,17 +9,47 @@
 </head>
 <body>
 
-<div class="container">
-    <h1>Sürat - Zaman Grafiği</h1>
+<div class="sidebar" id="sidebar">
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-    <div class="controls">
-        <input type="number" id="speed" placeholder="Sürat (m/s)">
-        <input type="number" id="time" placeholder="Zaman (s)">
-        <button onclick="addData()">Ekle</button>
-        <button onclick="clearData()">Temizle</button>
+    <h2>Menü</h2>
+
+    <div class="menu-group" onclick="toggleGroup('g1')">
+        Hareket Grafikleri ▼
+    </div>
+    <div class="submenu" id="g1">
+        <div class="menu-item" onclick="showPage('surat')">Sürat - Zaman</div>
+        <div class="menu-item">Konum - Zaman</div>
+        <div class="menu-item">İvme - Zaman</div>
     </div>
 
-    <canvas id="chart"></canvas>
+    <div class="menu-group" onclick="toggleGroup('g2')">
+        Grafik Analizi ▼
+    </div>
+    <div class="submenu" id="g2">
+        <div class="menu-item">Artan - Azalan</div>
+        <div class="menu-item">Sabit Grafik</div>
+        <div class="menu-item">Yorumlama</div>
+    </div>
+</div>
+
+<div class="main" id="main">
+
+    <div id="suratPage">
+        <div class="container">
+            <h1>Sürat - Zaman Grafiği</h1>
+
+            <div class="controls">
+                <input type="number" id="speed" placeholder="Sürat (m/s)">
+                <input type="number" id="time" placeholder="Zaman (s)">
+                <button onclick="addData()">Ekle</button>
+                <button onclick="clearData()">Temizle</button>
+            </div>
+
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+
 </div>
 
 <script src="app.js"></script>
