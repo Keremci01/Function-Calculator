@@ -1,4 +1,5 @@
 let dataPoints = []
+let currentType = "surat"
 
 const ctx = document.getElementById('chart').getContext('2d')
 
@@ -33,6 +34,25 @@ const chart = new Chart(ctx, {
     }
 })
 
+function updateChartType() {
+    if (currentType === "surat") {
+        chart.data.datasets[0].label = "Sürat (m/s)"
+        chart.options.scales.y.title.text = "Sürat (m/s)"
+    }
+
+    if (currentType === "konum") {
+        chart.data.datasets[0].label = "Konum (m)"
+        chart.options.scales.y.title.text = "Konum (m)"
+    }
+
+    if (currentType === "ivme") {
+        chart.data.datasets[0].label = "İvme (m/s²)"
+        chart.options.scales.y.title.text = "İvme (m/s²)"
+    }
+
+    chart.update()
+}
+
 function addData() {
     const time = parseFloat(document.getElementById('time').value)
     const speed = parseFloat(document.getElementById('speed').value)
@@ -61,21 +81,8 @@ function toggleGroup(id) {
 }
 
 function showPage(page) {
-    document.getElementById('suratPage').style.display = 'none'
-    document.getElementById('konumPage').style.display = 'none'
-    document.getElementById('ivmePage').style.display = 'none'
-
-    if (page === 'surat') {
-        document.getElementById('suratPage').style.display = 'block'
-    }
-
-    if (page === 'konum') {
-        document.getElementById('konumPage').style.display = 'block'
-    }
-
-    if (page === 'ivme') {
-        document.getElementById('ivmePage').style.display = 'block'
-    }
+    currentType = page
+    updateChartType()
 
     document.getElementById('sidebar').classList.remove('active')
 }
