@@ -1,22 +1,23 @@
-let times = []
-let speeds = []
+let dataPoints = []
 
 const ctx = document.getElementById('chart').getContext('2d')
 
 const chart = new Chart(ctx, {
-    type: 'line',
+    type: 'scatter',
     data: {
-        labels: times,
         datasets: [{
             label: 'Sürat (m/s)',
-            data: speeds,
+            data: dataPoints,
             borderWidth: 2,
+            showLine: true,
             tension: 0.3
         }]
     },
     options: {
         scales: {
             x: {
+                type: 'linear',
+                position: 'bottom',
                 title: {
                     display: true,
                     text: 'Zaman (s)'
@@ -33,13 +34,14 @@ const chart = new Chart(ctx, {
 })
 
 function addData() {
-    const time = document.getElementById('time').value
-    const speed = document.getElementById('speed').value
+    const time = parseFloat(document.getElementById('time').value)
+    const speed = parseFloat(document.getElementById('speed').value)
 
-    if(time === '' || speed === '') return
+    if(isNaN(time) || isNaN(speed)) return
 
-    times.push(time)
-    speeds.push(speed)
+    dataPoints.push({ x: time, y: speed })
+
+    dataPoints.sort((a, b) => a.x - b.x)
 
     chart.update()
 
@@ -48,7 +50,6 @@ function addData() {
 }
 
 function clearData() {
-    times.length = 0
-    speeds.length = 0
+    dataPoints.length = 0
     chart.update()
 }
