@@ -34,39 +34,18 @@
 </div>
 
 <div class="main" id="main">
+    <div class="container">
+        <h1 id="title">Sürat - Zaman Grafiği</h1>
 
-    <!-- SÜRAT -->
-    <div id="suratPage">
-        <div class="container">
-            <h1>Sürat - Zaman Grafiği</h1>
-
-            <div class="controls">
-                <input type="number" id="speed" placeholder="Sürat (m/s)">
-                <input type="number" id="time" placeholder="Zaman (s)">
-                <button onclick="addData()">Ekle</button>
-                <button onclick="clearData()">Temizle</button>
-            </div>
-
-            <canvas id="chart"></canvas>
+        <div class="controls">
+            <input type="number" id="speed" placeholder="Değer">
+            <input type="number" id="time" placeholder="Zaman (s)">
+            <button onclick="addData()">Ekle</button>
+            <button onclick="clearData()">Temizle</button>
         </div>
-    </div>
 
-    <!-- KONUM -->
-    <div id="konumPage" style="display:none;">
-        <div class="container">
-            <h1>Konum - Zaman Grafiği</h1>
-            <p>Buraya konum grafiği gelecek</p>
-        </div>
+        <canvas id="chart"></canvas>
     </div>
-
-    <!-- İVME -->
-    <div id="ivmePage" style="display:none;">
-        <div class="container">
-            <h1>İvme - Zaman Grafiği</h1>
-            <p>Buraya ivme grafiği gelecek</p>
-        </div>
-    </div>
-
 </div>
 
 <script src="app.js"></script>
